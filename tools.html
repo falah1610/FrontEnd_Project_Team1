@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse AI Tools - AI Tool Finder</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">🤖 AI Tool Finder</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="tools.html" class="active">Browse Tools</a></li>
+                <li id="authNav">
+                    <a href="auth.html">Login</a>
+                </li>
+                <li id="userNav" style="display: none;">
+                    <a href="profile.html">Profile</a>
+                    <button onclick="logout()" class="btn-logout">Logout</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="tools-section">
+        <div class="container">
+            <h1>All AI Tools</h1>
+            
+            <div class="filters-advanced">
+                <div class="filter-group">
+                    <label>Search:</label>
+                    <input type="text" id="searchInput" placeholder="Tool name...">
+                </div>
+                <div class="filter-group">
+                    <label>Category:</label>
+                    <select id="categoryFilter">
+                        <option value="">All</option>
+                        <option value="NLP">NLP</option>
+                        <option value="Computer Vision">Computer Vision</option>
+                        <option value="Productivity">Productivity</option>
+                        <option value="Dev Tools">Dev Tools</option>
+                        <option value="Audio">Audio</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Pricing:</label>
+                    <select id="pricingFilter">
+                        <option value="">All</option>
+                        <option value="FREE">Free</option>
+                        <option value="PAID">Paid</option>
+                        <option value="SUBSCRIPTION">Subscription</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Min Rating:</label>
+                    <select id="ratingFilter">
+                        <option value="">All</option>
+                        <option value="4.5">4.5+</option>
+                        <option value="4">4.0+</option>
+                        <option value="3">3.0+</option>
+                    </select>
+                </div>
+                <button onclick="applyFilters()" class="btn-primary">Filter</button>
+            </div>
+
+            <div id="toolsList" class="tools-grid">
+                <!-- Tools loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 AI Tool Finder. All rights reserved.</p>
+    </footer>
+
+    <script src="api.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

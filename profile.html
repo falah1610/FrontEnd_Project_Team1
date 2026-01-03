@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - AI Tool Finder</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">🤖 AI Tool Finder</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html">Browse Tools</a></li>
+                <li id="userNav">
+                    <a href="profile.html" class="active">Profile</a>
+                    <button onclick="logout()" class="btn-logout">Logout</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="profile-section">
+        <div class="container">
+            <h1>My Profile</h1>
+            
+            <div class="profile-container">
+                <div class="profile-info">
+                    <h2>Account Information</h2>
+                    <div class="info-group">
+                        <label>Username:</label>
+                        <p id="profileUsername"></p>
+                    </div>
+                    <div class="info-group">
+                        <label>Email:</label>
+                        <p id="profileEmail"></p>
+                    </div>
+                    <div class="info-group">
+                        <label>Name:</label>
+                        <p id="profileName"></p>
+                    </div>
+                    <div class="info-group">
+                        <label>Role:</label>
+                        <p id="profileRole"></p>
+                    </div>
+                </div>
+
+                <div class="change-password-section">
+                    <h2>Change Password</h2>
+                    <form id="passwordForm" class="password-form">
+                        <div class="form-group">
+                            <label for="currentPassword">Current Password:</label>
+                            <input type="password" id="currentPassword" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newPassword">New Password:</label>
+                            <input type="password" id="newPassword" required minlength="6">
+                        </div>
+                        <button type="submit" class="btn-primary">Change Password</button>
+                    </form>
+                    <div id="passwordMessage" class="message" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 AI Tool Finder. All rights reserved.</p>
+    </footer>
+
+    <script src="api.js"></script>
+    <script src="profile.js"></script>
+</body>
+</html>

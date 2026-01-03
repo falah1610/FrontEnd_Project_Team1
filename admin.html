@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - AI Tool Finder</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">🤖 AI Tool Finder</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li id="adminNav">
+                    <a href="admin.html" class="active">Admin Dashboard</a>
+                    <button onclick="logout()" class="btn-logout">Logout</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="admin-section">
+        <div class="container">
+            <h1>Admin Dashboard</h1>
+
+            <div class="admin-tabs">
+                <button class="tab-btn active" onclick="switchTab('tools')">Manage Tools</button>
+                <button class="tab-btn" onclick="switchTab('reviews')">Moderate Reviews</button>
+            </div>
+
+            <!-- Manage Tools Tab -->
+            <div id="toolsTab" class="tab-content active">
+                <h2>Manage AI Tools</h2>
+                <button onclick="showAddToolForm()" class="btn-primary">+ Add New Tool</button>
+
+                <div id="addToolForm" class="form-container" style="display: none;">
+                    <h3>Add New Tool</h3>
+                    <form id="toolForm">
+                        <div class="form-group">
+                            <label for="toolName">Tool Name:</label>
+                            <input type="text" id="toolName" required maxlength="150">
+                        </div>
+                        <div class="form-group">
+                            <label for="toolUseCase">Use Case:</label>
+                            <textarea id="toolUseCase" maxlength="1000"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="toolCategory">Category:</label>
+                            <input type="text" id="toolCategory" maxlength="100">
+                        </div>
+                        <div class="form-group">
+                            <label for="toolPricing">Pricing Type:</label>
+                            <select id="toolPricing" required>
+                                <option value="FREE">Free</option>
+                                <option value="PAID">Paid</option>
+                                <option value="SUBSCRIPTION">Subscription</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-primary">Add Tool</button>
+                        <button type="button" onclick="hideAddToolForm()" class="btn-secondary">Cancel</button>
+                    </form>
+                    <div id="toolMessage" class="message" style="display: none;"></div>
+                </div>
+
+                <!-- Edit Tool Form (hidden by default) -->
+                <div id="editToolForm" class="form-container" style="display: none;">
+                    <h3>Edit Tool</h3>
+                    <form id="toolEditForm">
+                        <input type="hidden" id="editToolId">
+                        <div class="form-group">
+                            <label for="editToolName">Tool Name:</label>
+                            <input type="text" id="editToolName" required maxlength="150">
+                        </div>
+                        <div class="form-group">
+                            <label for="editToolUseCase">Use Case:</label>
+                            <textarea id="editToolUseCase" maxlength="1000"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="editToolCategory">Category:</label>
+                            <input type="text" id="editToolCategory" maxlength="100">
+                        </div>
+                        <div class="form-group">
+                            <label for="editToolPricing">Pricing Type:</label>
+                            <select id="editToolPricing" required>
+                                <option value="FREE">Free</option>
+                                <option value="PAID">Paid</option>
+                                <option value="SUBSCRIPTION">Subscription</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-primary">Save Changes</button>
+                        <button type="button" onclick="hideEditToolForm()" class="btn-secondary">Cancel</button>
+                    </form>
+                    <div id="editToolMessage" class="message" style="display: none;"></div>
+                </div>
+
+                <div id="toolsList" class="admin-list">
+                    <!-- Tools listed here -->
+                </div>
+            </div>
+
+            <!-- Moderate Reviews Tab -->
+            <div id="reviewsTab" class="tab-content">
+                <h2>Moderate Reviews</h2>
+                <div id="reviewMessage" class="message" style="display: none;"></div>
+                <div class="review-filter">
+                    <select id="reviewStatusFilter">
+                        <option value="">All Reviews</option>
+                        <option value="PENDING">Pending</option>
+                        <option value="APPROVED">Approved</option>
+                        <option value="REJECTED">Rejected</option>
+                    </select>
+                    <button onclick="loadReviews()" class="btn-primary">Filter</button>
+                </div>
+                <div id="reviewsList" class="admin-list">
+                    <!-- Reviews listed here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 AI Tool Finder. All rights reserved.</p>
+    </footer>
+
+    <script src="api.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
